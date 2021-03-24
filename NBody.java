@@ -1,8 +1,7 @@
 /*******************************************************************************
  * 
- *  Dependencies: StdDraw.java, StdAudio.java
- *                Body.java, Star.java, BlackHole.java, Neutron.java, Pulsar.java
- *
+ *  Dependencies: StdDraw.java, StdAudio.java, Body.java
+ * 
  *  N-body simulation.
  *    *  Reads in input .txt file from the command line
  *    *  Reads in number of bodies N, radius of universe R, initial positions,
@@ -80,18 +79,19 @@ public class NBody {
 
             StdDraw.picture(0.0, 0.0, BACKGROUND);
             for (int i = 0; i < N; i++) {
-                
+
                 // calculate forces on each object
                 object[i].zeroF();
-                for (int j = 0; j < N; j++) { object[i].updateF(object[j], G); }
-
+                for (int j = 0; j < N; j++) { 
+                    if (i != j) { object[i].updateF(object[j], G); }
+                }
                 // update velocities and positions
                 object[i].step(dt, R);
                 object[i].draw();  
             }
+            StdDraw.show();
+            StdDraw.pause(DELAY);
         }
-        StdDraw.show();
-        StdDraw.pause(DELAY);
     }
 
     public static void main(String[] args) {

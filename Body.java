@@ -6,6 +6,7 @@
  **********************************************************************************/
 import java.util.Scanner;
 
+
 public class Body {
     public final double SCALE = 0.042;  // scalar for star size
 
@@ -34,17 +35,6 @@ public class Body {
         mass  = scan.nextDouble();
         image = scan.next();
         size  = Math.random() * SCALE * R;
-    }
-
-    public Body(double[] arr, double R) {
-        rx    = arr[0];
-        ry    = arr[1];
-        vx    = arr[2];
-        vy    = arr[3];
-        mass  = arr[4];
-        fx    = arr[5];
-        fy    = arr[6];
-        size  = SCALE * R;
     }
 
 /**********************************************************************************
@@ -78,7 +68,7 @@ public class Body {
     }
 
     // draw this object using it's rx, ry, and image data
-    public void draw() {
+    public void draw() {;
         StdDraw.picture(rx, ry, image, size, size);
     }
 
